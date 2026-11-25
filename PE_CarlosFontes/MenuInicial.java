@@ -3,10 +3,12 @@ package PE_CarlosFontes;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
+
 public class MenuInicial {
 
     /**
-     * Exibe o menu inicial do sistema, permitindo ao usuário escolher entre as
+     * Exibe o menu inicial do sistema, permitindo ao utilizador escolher entre as
      * opções de ADMIN, CLIENTE ou SAIR.
      */
     public static void menuInicial() {
@@ -27,7 +29,7 @@ public class MenuInicial {
             System.out.println("\n===============================\n");
 
             // Solicita ao utilizador que escolha uma opção do menu
-            // Tenta ler a opção do usuário, tratando exceções caso a entrada não seja um número
+            // Tenta ler a opção do utilizador, tratando exceções caso a entrada não seja um número
             try {
                 System.out.print("Escolha uma opção: ");
                 op = input.nextInt();
@@ -43,7 +45,7 @@ public class MenuInicial {
                         // Chamar menu do Admin
                         break;
                     case 2:
-                        // Chamar menu do Cliente
+                        FuncoesCliente.menuCliente();
                         break;
                     case 0:
                         System.out.println("A sair...");
@@ -60,6 +62,7 @@ public class MenuInicial {
 
     public static void main(String[] args) {
         menuInicial();
+        
 
     }
 }
