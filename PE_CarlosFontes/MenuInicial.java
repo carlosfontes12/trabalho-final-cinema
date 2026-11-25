@@ -42,7 +42,7 @@ public class MenuInicial {
             if (op != -1) {
                 switch (op) {
                     case 1:
-                        // Chamar menu do Admin
+                        FuncoesAdmin.menuAdmin();
                         break;
                     case 2:
                         FuncoesCliente.menuCliente();
