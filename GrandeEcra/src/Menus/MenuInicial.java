@@ -72,7 +72,7 @@ public class MenuInicial {
                         try {
                             if (Funcoes.FuncoesAdmin.autenticarAdmin(username, password)) {
                                 System.out.println("\nAutenticação bem-sucedida!");
-                                Funcoes.FuncoesAdmin.menuAdmin();
+                                Menus.MenuAdmin.menuAdmin();
                             } else {
                                 System.out.println("Autenticação falhou!");
                             }
@@ -83,7 +83,7 @@ public class MenuInicial {
                         break;
 
                     case 2:
-                        FuncoesCliente.menuCliente();
+                        Menus.MenuCliente.menuCliente();
                         break;
                     case 0:
                         System.out.println(" ");
