@@ -102,12 +102,47 @@ public class FuncoesAdmin {
         }while(op!=0);
     }
 
-
+    /** Funçao estatisticas de venda
+     *
+     * @throws FileNotFoundException quando nao encontra o ficheiro
+     */
     public static void estatisticasGeraisVendas() throws FileNotFoundException {
+
+
         System.out.println("Total de bilhetes vendidos:  " + (contarLinhasFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv")-1));
-        System.out.println ("Receita total: ");
-        System.out.println("Valor medio por bilhete: ");
+        System.out.println ("Receita total: " + receitaTotal()+"€");
+        System.out.println("Valor medio por bilhete: " + (receitaTotal()/(contarLinhasFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv")-1)));
     }
+
+    /** funçao que dá o valor total
+     *
+     * @return total da receita
+     * @throws FileNotFoundException quando nao encontra o ficheiro
+     */
+    public static double receitaTotal() throws FileNotFoundException{
+
+        double receitaTotal = 0;
+
+        //ler o ficheiro
+        File ficheiro = new File("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv");
+        Scanner sc = new Scanner(ficheiro);
+
+        //salta o cabeçalho
+        sc.nextLine();
+
+
+        // percorre o ficheiro e faz o somatorio do total
+        while (sc.hasNextLine()) {
+
+            String linhaAtual = sc.nextLine();
+            String[] linhaSeparada = linhaAtual.split(";");
+            receitaTotal += Double.parseDouble(linhaSeparada[10]);
+
+        }
+        return receitaTotal;
+    }
+
+
 
 
     }
