@@ -1,12 +1,44 @@
 package PE_CarlosFontes;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class FuncoesAdmin {
 
     /**
-     * Exibe o menu do administrador, permitindo ao utilizador escolher entre várias opções
+     * Autentica um administrador com base no nome de utilizador e senha
+     * fornecidos.
+     *
+     * @param username O nome de utilizador do administrador a ser autenticado.
+     * @param password A senha do administrador a ser autenticada.
+     * @return true se o administrador for autenticado com sucesso, false caso
+     * contrário.
+     * @throws FileNotFoundException Se o ficheiro de login do administrador não
+     * for encontrado.
+     */
+    public static boolean autenticarAdmin(String username, String password) throws FileNotFoundException {
+
+        File ficheiro = new File("PE_CarlosFontes/GrandeEcra_Ficheiros/GrandeEcra_AdminLogin.csv");
+        Scanner sc = new Scanner(ficheiro);
+        while (sc.hasNextLine()) {
+
+            String linhaAtual = sc.nextLine();
+            String[] linhaSeparada = linhaAtual.split(";");
+            if (linhaSeparada[0].equals(username) && linhaSeparada[1].equals(password)) {
+                sc.close();
+                return true;
+            }
+
+        }
+        sc.close();
+        return false;
+    }
+
+    /**
+     * Exibe o menu do administrador, permitindo ao utilizador escolher entre
+     * várias opções
      */
     public static void menuAdmin() {
         Scanner input = new Scanner(System.in);
@@ -61,5 +93,5 @@ public class FuncoesAdmin {
             }
         } while (op != 0);
     }
-    
+
 }

@@ -1,15 +1,33 @@
 package PE_CarlosFontes;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-
 
 public class MenuInicial {
 
     /**
-     * Exibe o menu inicial do sistema, permitindo ao utilizador escolher entre as
-     * opções de ADMIN, CLIENTE ou SAIR.
+     * Exibe o copyright do sistema.
+     */
+    public static void mostrarCopyright() {
+        File ficheiro = new File("PE_CarlosFontes/GrandeEcra_Ficheiros/GrandeEcra_Copyright.txt");
+        try {
+            Scanner sc = new Scanner(ficheiro);
+
+            while (sc.hasNextLine()) {
+                String linha = sc.nextLine();
+                System.out.println(linha);
+            }
+            sc.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Ocorreu um erro: ficheiro não encontrado");
+        }
+    }
+
+    /**
+     * Exibe o menu inicial do sistema e permite ao utilizador escolher entre
+     * ADMIN, CLIENTE ou SAIR.
      */
     public static void menuInicial() {
 
@@ -31,7 +49,7 @@ public class MenuInicial {
             // Solicita ao utilizador que escolha uma opção do menu
             // Tenta ler a opção do utilizador, tratando exceções caso a entrada não seja um número
             try {
-                System.out.print("Escolha uma opção: ");
+                System.out.print("\nEscolha uma opção: ");
                 op = input.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("Opção inválida, por favor insira um número!");
@@ -42,13 +60,30 @@ public class MenuInicial {
             if (op != -1) {
                 switch (op) {
                     case 1:
-                        FuncoesAdmin.menuAdmin();
+                        System.out.print("Introduza o username: ");
+                        String username = input.next();
+                        System.out.print("Introduza a password: ");
+                        String password = input.next();
+
+                        try {
+                            if (FuncoesAdmin.autenticarAdmin(username, password)) {
+                                System.out.println("\nAutenticação bem-sucedida!");
+                                FuncoesAdmin.menuAdmin();
+                            } else {
+                                System.out.println("Autenticação falhou!");
+                            }
+
+                        } catch (FileNotFoundException e) {
+                            System.out.println("Ocorreu um erro: ficheiro não encontrado");
+                        }
                         break;
+
                     case 2:
                         FuncoesCliente.menuCliente();
                         break;
                     case 0:
-                        System.out.println("A sair...");
+                        System.out.println(" ");
+                        mostrarCopyright();
                         break;
                     default:
                         System.out.println("Opção inválida, " + op + "!");
@@ -62,7 +97,6 @@ public class MenuInicial {
 
     public static void main(String[] args) {
         menuInicial();
-        
 
     }
 }
