@@ -109,9 +109,16 @@ public class FuncoesAdmin {
     public static void estatisticasGeraisVendas() throws FileNotFoundException {
 
 
-        System.out.println("Total de bilhetes vendidos:  " + (contarLinhasFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv")-1));
-        System.out.println ("Receita total: " + receitaTotal()+"€");
-        System.out.println("Valor medio por bilhete: " + (receitaTotal()/(contarLinhasFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv")-1)));
+        if((contarLinhasFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv")-1)==0) {
+            System.out.println("Total de bilhetes vendidos: 0");
+            System.out.println ("Receita total: 0€");
+            System.out.println("Valor medio por bilhete: 0€");
+        }
+        else {
+            System.out.println("Total de bilhetes vendidos:  " + (contarLinhasFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv")-1));
+            System.out.println ("Receita total: " + receitaTotal()+"€");
+            System.out.println("Valor medio por bilhete: " + (receitaTotal()/(contarLinhasFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv")-1))+ " €");
+        }
     }
 
     /** funçao que dá o valor total
