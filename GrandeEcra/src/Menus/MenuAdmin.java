@@ -4,8 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static Funcoes.FuncoesAdmin.consultaDosFicheiros;
-import static Funcoes.FuncoesAdmin.estatisticasGeraisVendas;
+import static Funcoes.FuncoesAdmin.*;
 
 public class MenuAdmin {
 
@@ -47,7 +46,7 @@ public class MenuAdmin {
                         estatisticasGeraisVendas();
                         break;
                     case 3:
-                        // Chamar função para receita por sala
+                        receitaSala();
                         break;
                     case 4:
                         // Chamar função para receita por filme

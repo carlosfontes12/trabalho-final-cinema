@@ -150,6 +150,43 @@ public class FuncoesAdmin {
     }
 
 
+    /** Funçºao que mostra a receita por sala
+     *
+     * @throws FileNotFoundException caso nao encontre o ficheiro
+     */
+    public static void receitaSala() throws FileNotFoundException {
+
+        double receitaMar=0, receitaTerra=0, receitaSol=0;
+
+        //ler o ficheiro
+        File ficheiro = new File("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv");
+        Scanner sc = new Scanner(ficheiro);
+
+        //salta o cabeçalho
+        sc.nextLine();
+
+
+        // percorre o ficheiro e faz o somatorio do total
+        while (sc.hasNextLine()) {
+
+            String linhaAtual = sc.nextLine();
+            String[] linhaSeparada = linhaAtual.split(";");
+
+            if(linhaSeparada[6].equals("Mar")) {
+                receitaMar += Double.parseDouble(linhaSeparada[10]);
+            }
+            if(linhaSeparada[6].equals("Sol")) {
+                receitaSol += Double.parseDouble(linhaSeparada[10]);
+            }
+            if(linhaSeparada[6].equals("Terra")) {
+                receitaTerra += Double.parseDouble(linhaSeparada[10]);
+            }
+
+        }
+        System.out.println("Sala Mar: " + receitaMar + "€");
+        System.out.println("Sala Sol: " + receitaSol+ "€");
+        System.out.println("Sala Terra: " + receitaTerra+ "€");
+    }
 
 
     }

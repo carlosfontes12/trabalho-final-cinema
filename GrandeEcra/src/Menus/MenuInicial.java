@@ -58,6 +58,7 @@ public class MenuInicial {
             } catch (InputMismatchException e) {
                 System.out.println("Opção inválida, por favor insira um número!");
                 input.next(); // limpar o buffer do scanner
+
                 //-1 indica leitura inválida, para o switch não ser executado
                 op = -1;
             }

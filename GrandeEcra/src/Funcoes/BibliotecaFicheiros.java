@@ -41,8 +41,6 @@ public class BibliotecaFicheiros {
 
         String[][] matrizMusicas = new String[numeroLinhasFicheiro - 1][numeroColunasFicheiro];
 
-        // System.out.println("Linhas: "+matrizMusicas.length);
-        // System.out.println("Colunas: "+matrizMusicas[0].length);
 
         File ficheiro = new File(caminho);
         Scanner sc = new Scanner(ficheiro);
