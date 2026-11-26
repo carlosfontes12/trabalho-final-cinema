@@ -1,10 +1,9 @@
 package Menus;
 
+import static Funcoes.FuncoesAdmin.*;
 import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import static Funcoes.FuncoesAdmin.*;
 
 public class MenuAdmin {
 
@@ -49,7 +48,7 @@ public class MenuAdmin {
                         receitaSala();
                         break;
                     case 4:
-                        // Chamar função para receita por filme
+                        receitaFilme();
                         break;
                     case 5:
                         // Chamar função para top 3 filmes com maior receita

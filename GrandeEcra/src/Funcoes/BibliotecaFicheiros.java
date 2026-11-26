@@ -22,6 +22,7 @@ public class BibliotecaFicheiros {
 
         String cabecalho = sc.nextLine();
         String[] cabecalhoSeparado = cabecalho.split(separador);
+        sc.close();
 
         return cabecalhoSeparado.length;
     }
@@ -61,6 +62,7 @@ public class BibliotecaFicheiros {
             linhaPreencher++;
         }
 
+        sc.close();
         return matrizMusicas;
     }
 
@@ -96,6 +98,7 @@ public class BibliotecaFicheiros {
             String linha = sc.nextLine();
             System.out.println(linha);
         }
+        sc.close();
     }
 
     /**
@@ -136,6 +139,7 @@ public class BibliotecaFicheiros {
         }
 
         pw.close();
+        sc.close();
 
     }
 
@@ -152,6 +156,7 @@ public class BibliotecaFicheiros {
             total+=numeroAtual;
         }
 
+        sc.close();
         return total;
 
     }
@@ -175,6 +180,7 @@ public class BibliotecaFicheiros {
             sc.nextLine();
         }
 
+        sc.close();
         return numeroLinhas;
 
     }
@@ -191,6 +197,7 @@ public class BibliotecaFicheiros {
             sc.next();
         }
 
+        sc.close();
         return numeroPalavras;
 
     }

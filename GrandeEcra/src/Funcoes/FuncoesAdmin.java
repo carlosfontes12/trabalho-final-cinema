@@ -1,18 +1,17 @@
 package Funcoes;
 
+import static Funcoes.BibliotecaFicheiros.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import static Funcoes.BibliotecaFicheiros.*;
-
 
 public class FuncoesAdmin {
 
     /**
      * Autentica um administrador com base no nome de utilizador e senha
      * fornecidos.
+     *
      *
      * @param username O nome de utilizador do administrador a ser autenticado.
      * @param password A senha do administrador a ser autenticada.
@@ -39,15 +38,15 @@ public class FuncoesAdmin {
         return false;
     }
 
-
-    /** funçao par consulta dos ficheiros
+    /**
+     * funçao para consulta dos ficheiros
      *
      * @throws FileNotFoundException se o ficheiro não for encontrado
      */
-    public static void consultaDosFicheiros () throws  FileNotFoundException{
+    public static void consultaDosFicheiros() throws FileNotFoundException {
         Scanner input = new Scanner(System.in);
 
-        int op =-1;
+        int op = -1;
 
         do {
             System.out.println("================== Consulta dos ficheiros ==================");
@@ -71,62 +70,71 @@ public class FuncoesAdmin {
                 //-1 indica leitura inválida, para o switch não ser executado
                 op = -1;
             }
-                if (op != -1) {
+            if (op != -1) {
                 switch (op) {
-                case 1: imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_AdminLogin.csv");
-                    break;
-                case 2: imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv");
-                    break;
-                case 3: imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Cartaz.txt");
-                    break;
-                case 4:imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Copyright.txt");
-                    break;
-                case 5: imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Filmes.csv");
-                    break;
-                case 6: imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Quiz.csv");
-                    break;
-                case 7: imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/Sala_Mar.csv");
-                    break;
-                case 8: imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/Sala_Mar.csv");
-                    break;
-                case 9: imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/Sala_Terra.csv");
-                    break;
-                case 0:
-                    System.out.println("A voltar...");
-                    break;
-                default:
-                    System.out.println("Opção inválida, " + op + "!");
-                    break;
-            }
+                    case 1:
+                        imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_AdminLogin.csv");
+                        break;
+                    case 2:
+                        imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv");
+                        break;
+                    case 3:
+                        imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Cartaz.txt");
+                        break;
+                    case 4:
+                        imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Copyright.txt");
+                        break;
+                    case 5:
+                        imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Filmes.csv");
+                        break;
+                    case 6:
+                        imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Quiz.csv");
+                        break;
+                    case 7:
+                        imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/Sala_Mar.csv");
+                        break;
+                    case 8:
+                        imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/Sala_Sol.csv");
+                        break;
+                    case 9:
+                        imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/Sala_Terra.csv");
+                        break;
+                    case 0:
+                        System.out.println("A voltar...");
+                        break;
+                    default:
+                        System.out.println("Opção inválida, " + op + "!");
+                        break;
                 }
-        }while(op!=0);
+            }
+        } while (op != 0);
     }
 
-    /** Funçao estatisticas de venda
+    /**
+     * Funçao estatisticas de venda
      *
      * @throws FileNotFoundException quando nao encontra o ficheiro
      */
     public static void estatisticasGeraisVendas() throws FileNotFoundException {
 
-
-        if((contarLinhasFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv")-1)==0) {
+        if ((contarLinhasFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv") - 1) == 0) {
             System.out.println("Total de bilhetes vendidos: 0");
-            System.out.println ("Receita total: 0€");
+            System.out.println("Receita total: 0€");
             System.out.println("Valor medio por bilhete: 0€");
-        }
-        else {
-            System.out.println("Total de bilhetes vendidos:  " + (contarLinhasFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv")-1));
-            System.out.println ("Receita total: " + receitaTotal()+"€");
-            System.out.println("Valor medio por bilhete: " + (receitaTotal()/(contarLinhasFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv")-1))+ " €");
+        } else {
+            System.out.println("Total de bilhetes vendidos:  " + (contarLinhasFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv") - 1));
+            System.out.println("Receita total: " + receitaTotal() + "€");
+            System.out.println("Valor medio por bilhete: " + (receitaTotal() / (contarLinhasFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv") - 1)) + " €");
         }
     }
 
-    /** funçao que dá o valor total
+    /**
+     * funçao que dá o valor total da receita
      *
      * @return total da receita
      * @throws FileNotFoundException quando nao encontra o ficheiro
      */
-    public static double receitaTotal() throws FileNotFoundException{
+    public static double receitaTotal() throws FileNotFoundException {
 
         double receitaTotal = 0;
 
@@ -137,7 +145,6 @@ public class FuncoesAdmin {
         //salta o cabeçalho
         sc.nextLine();
 
-
         // percorre o ficheiro e faz o somatorio do total
         while (sc.hasNextLine()) {
 
@@ -146,18 +153,20 @@ public class FuncoesAdmin {
             receitaTotal += Double.parseDouble(linhaSeparada[10]);
 
         }
+        sc.close();
         return receitaTotal;
+
     }
 
-
-    /** Funçºao que mostra a receita por sala
+    /**
+     * Função que mostra a receita por sala
      *
      * @throws FileNotFoundException caso nao encontre o ficheiro
      */
     public static void receitaSala() throws FileNotFoundException {
 
-        double receitaMar=0, receitaTerra=0, receitaSol=0;
-        int contadorMar=0, contadorTerra=0, contadorSol=0;
+        double receitaMar = 0, receitaTerra = 0, receitaSol = 0;
+        int contadorMar = 0, contadorTerra = 0, contadorSol = 0;
 
         //ler o ficheiro
         File ficheiro = new File("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv");
@@ -166,34 +175,71 @@ public class FuncoesAdmin {
         //salta o cabeçalho
         sc.nextLine();
 
-
         // percorre o ficheiro e faz o somatorio do total
         while (sc.hasNextLine()) {
 
             String linhaAtual = sc.nextLine();
             String[] linhaSeparada = linhaAtual.split(";");
 
-            if(linhaSeparada[6].equals("Mar")) {
+            if (linhaSeparada[6].equals("Mar")) {
                 receitaMar += Double.parseDouble(linhaSeparada[10]);
                 contadorMar++;
             }
-            if(linhaSeparada[6].equals("Sol")) {
+            if (linhaSeparada[6].equals("Sol")) {
                 receitaSol += Double.parseDouble(linhaSeparada[10]);
                 contadorSol++;
             }
-            if(linhaSeparada[6].equals("Terra")) {
+            if (linhaSeparada[6].equals("Terra")) {
                 receitaTerra += Double.parseDouble(linhaSeparada[10]);
                 contadorTerra++;
             }
 
         }
         System.out.println("Sala Mar: " + receitaMar + "€" + " | Bilhetes: " + contadorMar);
-        System.out.println("Sala Sol: " + receitaSol+ "€" + " | Bilhetes: " + contadorSol);
-        System.out.println("Sala Terra: " + receitaTerra+ "€" + " | Bilhetes: " + contadorTerra);
+        System.out.println("Sala Sol: " + receitaSol + "€" + " | Bilhetes: " + contadorSol);
+        System.out.println("Sala Terra: " + receitaTerra + "€" + " | Bilhetes: " + contadorTerra);
+        sc.close();
     }
 
+    /**
+     * Função que mostra a receita de um filme específico dado o seu título
+     *
+     * @throws FileNotFoundException caso nao encontre o ficheiro
+     */
+    public static void receitaFilme() throws FileNotFoundException {
 
+        double receitaFilme = 0;
+        int contadorFilme = 0;
 
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Qual o titulo do filme: ");
+        String tituloFilme = input.nextLine();
+
+        //ler o ficheiro
+        File ficheiro = new File("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv");
+        Scanner sc = new Scanner(ficheiro);
+
+        //salta o cabeçalho
+        sc.nextLine();
+
+        // percorre o ficheiro e faz o somatorio do total
+        while (sc.hasNextLine()) {
+
+            String linhaAtual = sc.nextLine();
+            String[] linhaSeparada = linhaAtual.split(";");
+            if (linhaSeparada[5].equals(tituloFilme)) {
+                receitaFilme += Double.parseDouble(linhaSeparada[10]);
+                contadorFilme++;
+            }
+
+        }
+        sc.close();
+        if (contadorFilme == 0) {
+            System.out.println("Não existe vendas para o filme " + tituloFilme);
+        } else {
+            System.out.println("Receita do filme " + tituloFilme + ":" + receitaFilme + "€" + " | Bilhetes: " + contadorFilme);
+        }
 
     }
-
+}

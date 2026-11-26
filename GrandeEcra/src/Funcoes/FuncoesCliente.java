@@ -2,8 +2,6 @@ package Funcoes;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.sql.SQLOutput;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class FuncoesCliente {
