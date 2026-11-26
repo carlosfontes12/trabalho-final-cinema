@@ -1,9 +1,10 @@
 package Menus;
 
+import Funcoes.FuncoesCliente;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import static Funcoes.FuncoesCliente.consultarCartaz;
+import static Funcoes.FuncoesCliente.novoRegisto;
 
 public class MenuCliente {
 
@@ -39,7 +40,7 @@ public class MenuCliente {
             if (op != -1) {
                 switch (op) {
                     case 1:
-                        // Chamar função para novo registo
+                        novoRegisto();
                         break;
                     case 2:
                         consultarCartaz();
