@@ -105,16 +105,7 @@ public class FuncoesAdmin {
 
     public static void receitaSala(String[][] matriz, String sala) {
 
-        lerFicheiroParaMatriz();
 
-        System.out.println("Receita " + sala);
-
-        for (int linha = 0; linha < matriz.length; linha++) {
-
-            if (matriz[linha][2].equals(sala)) {
-                System.out.println(matriz[linha][1] + " | " + matriz[linha][0]);
-            }
-        }
     }
 
 
