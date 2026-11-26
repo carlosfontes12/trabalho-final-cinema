@@ -53,7 +53,7 @@ public class MenuInicial {
             // Solicita ao utilizador que escolha uma opção do menu
             // Tenta ler a opção do utilizador, tratando exceções caso a entrada não seja um número
             try {
-                System.out.print("\nEscolha uma opção: ");
+                System.out.print("Escolha uma opção: ");
                 op = input.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("Opção inválida, por favor insira um número!");

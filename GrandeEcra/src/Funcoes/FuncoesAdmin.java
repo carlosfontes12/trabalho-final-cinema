@@ -23,7 +23,7 @@ public class FuncoesAdmin {
      */
     public static boolean autenticarAdmin(String username, String password) throws FileNotFoundException {
 
-        File ficheiro = new File("GrandeEcra_Ficheiros/GrandeEcra_AdminLogin.csv");
+        File ficheiro = new File("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_AdminLogin.csv");
         Scanner sc = new Scanner(ficheiro);
         while (sc.hasNextLine()) {
 
