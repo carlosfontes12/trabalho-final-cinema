@@ -7,6 +7,81 @@ import java.util.Scanner;
 
 public class BibliotecaFicheiros {
 
+    /**
+     * contar colunas do ficheiro
+     * @param caminho para o ficheiro
+     * @param separador usado
+     * @return
+     * @throws FileNotFoundException quando nao encontra o ficheiro
+     */
+
+    public static int contarColunasFicheiro(String caminho, String separador) throws FileNotFoundException {
+
+        File ficheiro = new File(caminho);
+        Scanner sc = new Scanner(ficheiro);
+
+        String cabecalho = sc.nextLine();
+        String[] cabecalhoSeparado = cabecalho.split(separador);
+
+        return cabecalhoSeparado.length;
+    }
+
+
+    /**
+     * Função que lê o conteúdo de um ficheiro para uma matriz, excluindo cabeçalho
+     *
+     * @param caminho Caminho para o ficheiro
+     * @return Matriz (String) c/ o conteúdo do ficheiro
+     * @throws FileNotFoundException Caso o ficheiro não seja encontrado
+     */
+    public static String[][] lerFicheiroParaMatriz(String caminho, String separador) throws FileNotFoundException {
+
+        int numeroLinhasFicheiro = contarLinhasFicheiro(caminho);
+        int numeroColunasFicheiro = contarColunasFicheiro(caminho, separador);
+
+        String[][] matrizMusicas = new String[numeroLinhasFicheiro - 1][numeroColunasFicheiro];
+
+        // System.out.println("Linhas: "+matrizMusicas.length);
+        // System.out.println("Colunas: "+matrizMusicas[0].length);
+
+        File ficheiro = new File(caminho);
+        Scanner sc = new Scanner(ficheiro);
+
+        // Avançar cabeçalho
+        sc.nextLine();
+
+        int linhaPreencher = 0;
+
+        while (sc.hasNextLine()) {
+            String linhaAtual = sc.nextLine();
+            String[] linhaSeparada = linhaAtual.split(separador);
+
+            for (int i = 0; i < linhaSeparada.length; i++) {
+                matrizMusicas[linhaPreencher][i] = linhaSeparada[i];
+            }
+
+            linhaPreencher++;
+        }
+
+        return matrizMusicas;
+    }
+
+    /**
+     * Função que imprime uma matriz na consola
+     *
+     * @param matriz Matriz a ser impressa
+     */
+    public static void imprimirMatriz(String[][] matriz) {
+
+        // Impressão da matriz
+        for (int linha = 0; linha < matriz.length; linha++) {
+            for (int coluna = 0; coluna < matriz[0].length; coluna++) {
+                System.out.print(matriz[linha][coluna] + "\t | ");
+            }
+            System.out.println();
+        }
+    }
+
 
     /**
      * Função que imprime um ficheiro na consola
@@ -82,6 +157,13 @@ public class BibliotecaFicheiros {
         return total;
 
     }
+
+    /**
+     * funçao para contar linhas de um ficheiro
+     * @param caminho do ficheiro
+     * @return o numero de linhas do ficheiro
+     * @throws FileNotFoundException quando nao encontra o ficheiro
+     */
 
     public static int contarLinhasFicheiro(String caminho) throws FileNotFoundException {
 
