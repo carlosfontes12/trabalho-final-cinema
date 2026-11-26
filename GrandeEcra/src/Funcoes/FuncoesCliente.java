@@ -1,4 +1,4 @@
-package PE_CarlosFontes;
+package Funcoes;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

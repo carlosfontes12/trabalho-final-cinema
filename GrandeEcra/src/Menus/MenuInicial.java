@@ -1,9 +1,13 @@
-package PE_CarlosFontes;
+package Menus;
+
+import Funcoes.FuncoesAdmin;
+import Funcoes.FuncoesCliente;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 
 public class MenuInicial {
 
@@ -11,7 +15,7 @@ public class MenuInicial {
      * Exibe o copyright do sistema.
      */
     public static void mostrarCopyright() {
-        File ficheiro = new File("PE_CarlosFontes/GrandeEcra_Ficheiros/GrandeEcra_Copyright.txt");
+        File ficheiro = new File("GrandeEcra_Ficheiros/GrandeEcra_Copyright.txt");
         try {
             Scanner sc = new Scanner(ficheiro);
 
@@ -66,9 +70,9 @@ public class MenuInicial {
                         String password = input.next();
 
                         try {
-                            if (FuncoesAdmin.autenticarAdmin(username, password)) {
+                            if (Funcoes.FuncoesAdmin.autenticarAdmin(username, password)) {
                                 System.out.println("\nAutenticação bem-sucedida!");
-                                FuncoesAdmin.menuAdmin();
+                                Funcoes.FuncoesAdmin.menuAdmin();
                             } else {
                                 System.out.println("Autenticação falhou!");
                             }
