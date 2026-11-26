@@ -245,6 +245,7 @@ public class FuncoesAdmin {
 
     /**
      * Mostra os top 3 filmes com maior receita
+     *
      * @throws FileNotFoundException
      */
     public static void topFilmes() throws FileNotFoundException {
