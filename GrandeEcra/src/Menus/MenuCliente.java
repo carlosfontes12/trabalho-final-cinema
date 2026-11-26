@@ -3,6 +3,8 @@ package Menus;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import static Funcoes.FuncoesCliente.consultarCartaz;
+
 public class MenuCliente {
 
     /**
@@ -40,7 +42,7 @@ public class MenuCliente {
                         // Chamar função para novo registo
                         break;
                     case 2:
-                        // Chamar função para consultar cartaz cinematográfico
+                        consultarCartaz();
                         break;
                     case 3:
                         // Chamar função para pesquisar filmes
