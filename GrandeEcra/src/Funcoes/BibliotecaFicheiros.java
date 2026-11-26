@@ -40,7 +40,7 @@ public class BibliotecaFicheiros {
         int numeroLinhasFicheiro = contarLinhasFicheiro(caminho);
         int numeroColunasFicheiro = contarColunasFicheiro(caminho, separador);
 
-        String[][] matrizMusicas = new String[numeroLinhasFicheiro - 1][numeroColunasFicheiro];
+        String[][] matriz = new String[numeroLinhasFicheiro - 1][numeroColunasFicheiro];
 
 
         File ficheiro = new File(caminho);
@@ -56,14 +56,14 @@ public class BibliotecaFicheiros {
             String[] linhaSeparada = linhaAtual.split(separador);
 
             for (int i = 0; i < linhaSeparada.length; i++) {
-                matrizMusicas[linhaPreencher][i] = linhaSeparada[i];
+                matriz[linhaPreencher][i] = linhaSeparada[i];
             }
 
             linhaPreencher++;
         }
 
         sc.close();
-        return matrizMusicas;
+        return matriz;
     }
 
     /**

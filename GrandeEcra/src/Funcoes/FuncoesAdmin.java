@@ -213,7 +213,7 @@ public class FuncoesAdmin {
 
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Qual o titulo do filme: ");
+        System.out.print("Qual o titulo do filme: ");
         String tituloFilme = input.nextLine();
 
         //ler o ficheiro
@@ -238,8 +238,56 @@ public class FuncoesAdmin {
         if (contadorFilme == 0) {
             System.out.println("Não existe vendas para o filme " + tituloFilme);
         } else {
-            System.out.println("Receita do filme " + tituloFilme + ":" + receitaFilme + "€" + " | Bilhetes: " + contadorFilme);
+            System.out.println("Receita do filme " + tituloFilme + ": " + receitaFilme + "€" + " | Bilhetes: " + contadorFilme);
         }
 
     }
+
+    /**
+     * Mostra os top 3 filmes com maior receita
+     * @throws FileNotFoundException
+     */
+    public static void topFilmes() throws FileNotFoundException {
+
+        String[][] filmes = lerFicheiroParaMatriz("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Filmes.csv", ";");
+        double[] receitas = new double[filmes.length];
+        int bilhetes[] = new int[filmes.length];
+
+        File ficheiro = new File("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv");
+        Scanner sc = new Scanner(ficheiro);
+
+        //salta o cabeçalho
+        sc.nextLine();
+
+        while (sc.hasNextLine()) {
+            String linhaAtual = sc.nextLine();
+            String[] linhaSeparada = linhaAtual.split(";");
+            for (int i = 0; i < filmes.length; i++) {
+                if (linhaSeparada[5].equals(filmes[i][1])) {
+                    receitas[i] += Double.parseDouble(linhaSeparada[10]);
+                    bilhetes[i]++;
+                }
+            }
+        }
+        sc.close();
+
+        System.out.println("***** TOP 3 FILMES COM MAIOR RECEITA *****");
+        for (int i = 0; i < 3; i++) {
+            // começa a procura assumindo que o primeiro filme é o maior
+            double maior = receitas[0];
+            int posMaior = 0;
+
+            for (int j = 1; j < filmes.length; j++) {
+                if (receitas[j] > maior) {
+                    maior = receitas[j];
+                    posMaior = j;
+                }
+            }
+
+            System.out.println("Filme: " + filmes[posMaior][1] + " | Bilhetes: " + bilhetes[posMaior] + " | Receita: " + receitas[posMaior] + " €");
+            receitas[posMaior] = -1; // para não ser escolhido novamente
+        }
+
+    }
+
 }

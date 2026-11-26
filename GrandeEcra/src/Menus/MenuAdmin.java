@@ -51,7 +51,7 @@ public class MenuAdmin {
                         receitaFilme();
                         break;
                     case 5:
-                        // Chamar função para top 3 filmes com maior receita
+                        topFilmes();
                         break;
                     case 6:
                         // Chamar função para resetar lotação de uma sala
