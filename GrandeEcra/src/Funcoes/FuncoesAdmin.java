@@ -157,6 +157,7 @@ public class FuncoesAdmin {
     public static void receitaSala() throws FileNotFoundException {
 
         double receitaMar=0, receitaTerra=0, receitaSol=0;
+        int contadorMar=0, contadorTerra=0, contadorSol=0;
 
         //ler o ficheiro
         File ficheiro = new File("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv");
@@ -174,19 +175,24 @@ public class FuncoesAdmin {
 
             if(linhaSeparada[6].equals("Mar")) {
                 receitaMar += Double.parseDouble(linhaSeparada[10]);
+                contadorMar++;
             }
             if(linhaSeparada[6].equals("Sol")) {
                 receitaSol += Double.parseDouble(linhaSeparada[10]);
+                contadorSol++;
             }
             if(linhaSeparada[6].equals("Terra")) {
                 receitaTerra += Double.parseDouble(linhaSeparada[10]);
+                contadorTerra++;
             }
 
         }
-        System.out.println("Sala Mar: " + receitaMar + "€");
-        System.out.println("Sala Sol: " + receitaSol+ "€");
-        System.out.println("Sala Terra: " + receitaTerra+ "€");
+        System.out.println("Sala Mar: " + receitaMar + "€" + " | Bilhetes: " + contadorMar);
+        System.out.println("Sala Sol: " + receitaSol+ "€" + " | Bilhetes: " + contadorSol);
+        System.out.println("Sala Terra: " + receitaTerra+ "€" + " | Bilhetes: " + contadorTerra);
     }
+
+
 
 
     }
