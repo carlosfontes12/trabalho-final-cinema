@@ -73,23 +73,23 @@ public class FuncoesAdmin {
             }
                 if (op != -1) {
                 switch (op) {
-                case 1: imprimirFicheiro("GrandeEcra_Ficheiros/GrandeEcra_AdminLogin.csv");
+                case 1: imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_AdminLogin.csv");
                     break;
-                case 2: imprimirFicheiro("GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv");
+                case 2: imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv");
                     break;
-                case 3: imprimirFicheiro("GrandeEcra_Ficheiros/GrandeEcra_Cartaz.txt");
+                case 3: imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Cartaz.txt");
                     break;
-                case 4:imprimirFicheiro("GrandeEcra_Ficheiros/GrandeEcra_Copyright.txt");
+                case 4:imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Copyright.txt");
                     break;
-                case 5: imprimirFicheiro("GrandeEcra_Ficheiros/GrandeEcra_Filmes.csv");
+                case 5: imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Filmes.csv");
                     break;
-                case 6: imprimirFicheiro("GrandeEcra_Ficheiros/GrandeEcra_Quiz.csv");
+                case 6: imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Quiz.csv");
                     break;
-                case 7: imprimirFicheiro("GrandeEcra_Ficheiros/Sala_Mar.csv");
+                case 7: imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/Sala_Mar.csv");
                     break;
-                case 8: imprimirFicheiro("GrandeEcra_Ficheiros/Sala_Mar.csv");
+                case 8: imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/Sala_Mar.csv");
                     break;
-                case 9: imprimirFicheiro("GrandeEcra_Ficheiros/Sala_Terra.csv");
+                case 9: imprimirFicheiro("GrandeEcra/GrandeEcra_Ficheiros/Sala_Terra.csv");
                     break;
                 case 0:
                     System.out.println("A voltar...");

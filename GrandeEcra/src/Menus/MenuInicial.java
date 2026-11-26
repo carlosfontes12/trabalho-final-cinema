@@ -15,7 +15,7 @@ public class MenuInicial {
      * Exibe o copyright do sistema.
      */
     public static void mostrarCopyright() {
-        File ficheiro = new File("GrandeEcra_Ficheiros/GrandeEcra_Copyright.txt");
+        File ficheiro = new File("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Copyright.txt");
         try {
             Scanner sc = new Scanner(ficheiro);
 
