@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import static Funcoes.BibliotecaFicheiros.imprimirFicheiro;
-import static Funcoes.BibliotecaFicheiros.lerFicheiroParaMatriz;
+
+import static Funcoes.BibliotecaFicheiros.*;
 
 
 public class FuncoesAdmin {
@@ -103,10 +103,12 @@ public class FuncoesAdmin {
     }
 
 
-    public static void receitaSala(String[][] matriz, String sala) {
+    public static void estatisticasGeraisVendas() throws FileNotFoundException {
+        System.out.println("Total de bilhetes vendidos:  " + (contarLinhasFicheiro("GrandeEcra/GrandeEcra_Ficheiros/GrandeEcra_Bilhetes.csv")-1));
+        System.out.println ("Receita total: ");
+        System.out.println("Valor medio por bilhete: ");
+    }
 
 
     }
 
-
-}

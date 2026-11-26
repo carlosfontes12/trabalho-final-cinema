@@ -5,6 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static Funcoes.FuncoesAdmin.consultaDosFicheiros;
+import static Funcoes.FuncoesAdmin.estatisticasGeraisVendas;
 
 public class MenuAdmin {
 
@@ -43,7 +44,7 @@ public class MenuAdmin {
                         consultaDosFicheiros();
                         break;
                     case 2:
-                        // Chamar função para estatísticas gerais de venda
+                        estatisticasGeraisVendas();
                         break;
                     case 3:
                         // Chamar função para receita por sala
