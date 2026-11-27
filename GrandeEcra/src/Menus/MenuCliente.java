@@ -1,10 +1,11 @@
 package Menus;
 
 import Funcoes.FuncoesCliente;
+
+import static Funcoes.FuncoesCliente.*;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import static Funcoes.FuncoesCliente.consultarCartaz;
-import static Funcoes.FuncoesCliente.novoRegisto;
 
 public class MenuCliente {
 
@@ -46,7 +47,7 @@ public class MenuCliente {
                         consultarCartaz();
                         break;
                     case 3:
-                        // Chamar função para pesquisar filmes
+                        pesquisarFilme();
                         break;
                     case 4:
                         // Chamar função para visualizar mapa de uma sala

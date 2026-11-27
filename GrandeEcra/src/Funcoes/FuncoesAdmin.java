@@ -292,6 +292,12 @@ public class FuncoesAdmin {
 
     }
 
+    /**Função que permite resetar a lotação de uma sala específica.
+     * O utilizador escolhe a sala e confirma a reposição da lotação.
+     * 
+     *
+     * @throws FileNotFoundException
+     */
     public static void resetarSala() throws FileNotFoundException {
 
         Scanner sc = new Scanner(System.in);
@@ -349,6 +355,7 @@ public class FuncoesAdmin {
             int totalLugares = 0;
             String[][] matrizSala = lerFicheiroParaMatrizSemCabecalho(caminhoFicheiro, ";");
 
+            // Percorre a matriz da sala para contar lugares disponíveis e ocupados, e repor a lotação
             for (int i = 0; i < matrizSala.length; i++) {
 
                 for (int j = 0; j < matrizSala[i].length; j++) {
