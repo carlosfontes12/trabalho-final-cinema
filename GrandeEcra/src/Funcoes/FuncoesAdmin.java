@@ -278,6 +278,7 @@ public class FuncoesAdmin {
             double maior = receitas[0];
             int posMaior = 0;
 
+            // procura o maior entre os restantes filmes
             for (int j = 1; j < filmes.length; j++) {
                 if (receitas[j] > maior) {
                     maior = receitas[j];
@@ -289,6 +290,87 @@ public class FuncoesAdmin {
             receitas[posMaior] = -1; // para não ser escolhido novamente
         }
 
+    }
+
+    public static void resetarSala() throws FileNotFoundException {
+
+        Scanner sc = new Scanner(System.in);
+
+        int sala = -1;
+        String nomeSala = "";
+        String caminhoFicheiro = "";
+
+        //pequeno menu para escolher a sala a resetar
+        do {
+            System.out.println("1 - Sala Mar");
+            System.out.println("2 - Sala Terra");
+            System.out.println("3 - Sala Sol");
+            System.out.print("Escolha a sala que deseja resetar:");
+            try {
+                sala = sc.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Opção invalida, insira um número.");
+                sc.nextLine(); // limpar o buffer do scanner
+                sala = -1; // forçar a repetição do loop
+            }
+            if (sala != -1) {
+                // atribui o caminho do ficheiro e o nome da sala com base na escolha do utilizador
+                switch (sala) {
+                    case 1:
+                        System.out.println("Sala Mar selecionada.");
+                        nomeSala = "Mar";
+                        caminhoFicheiro = "GrandeEcra/GrandeEcra_Ficheiros/Sala_Mar.csv";
+                        break;
+                    case 2:
+                        System.out.println("Sala Terra selecionada.");
+                        nomeSala = "Terra";
+                        caminhoFicheiro = "GrandeEcra/GrandeEcra_Ficheiros/Sala_Terra.csv";
+                        break;
+                    case 3:
+                        System.out.println("Sala Sol selecionada.");
+                        nomeSala = "Sol";
+                        caminhoFicheiro = "GrandeEcra/GrandeEcra_Ficheiros/Sala_Sol.csv";
+                        break;
+                    default:
+                        System.out.println("Opção inválida.");
+                        break;
+                }
+
+            }
+        } while (sala <= 0 || sala > 3);
+
+        // Confirmação da reposição da lotação da sala
+        System.out.println("Confirma a reposição da lotação da sala? (S/N) ");
+        String resposta = sc.next();
+        // lê a resposta do utilizador sobre a reposição da lotação da sala
+        if (resposta.equals("S") || resposta.equals("s")) {
+            int lugaresDisponiveis = 0;
+            int lugaresOcupados = 0;
+            int totalLugares = 0;
+            String[][] matrizSala = lerFicheiroParaMatrizSemCabecalho(caminhoFicheiro, ";");
+           
+            
+           for (int i = 0; i < matrizSala.length; i++) {
+                
+
+                for (int j = 0; j < matrizSala[i].length; j++) {
+                    if (matrizSala[i][j].equals("0")) {
+                        lugaresDisponiveis++;
+                    } else if (matrizSala[i][j].equals("1")) {
+                        lugaresOcupados++;
+                        matrizSala[i][j] = "0"; // marca o lugar como disponível após a reposição da lotação
+                    }
+                }
+            }
+            totalLugares = lugaresDisponiveis + lugaresOcupados;
+            System.out.println("Lugares disponíveis: " + lugaresDisponiveis);
+            System.out.println("Lugares ocupados: " + lugaresOcupados);
+            System.out.println("Total de lugares: " + (totalLugares));
+            // escreve a matriz atualizada de volta para o ficheiro
+            escreverFicheiro(caminhoFicheiro,, ";"));
+        } else {
+            System.out.println("Operação cancelada.");
+        }
     }
 
 }

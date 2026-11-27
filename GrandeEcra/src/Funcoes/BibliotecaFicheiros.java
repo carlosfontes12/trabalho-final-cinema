@@ -118,14 +118,15 @@ public class BibliotecaFicheiros {
         pw.close();
     }
 
-    /**
-     * Função que copia o conteúdo de um ficheiro para outro ficheiro
+    /**Função que copia o conteúdo de um ficheiro para outro ficheiro
+     * 
      *
      * @param caminhoOriginal Caminho do ficheiro original (que contém a informação)
      * @param caminhoCopia    Caminho do ficheiro cópia (onde queremos colocar a informação)
      * @throws FileNotFoundException Caso o ficheiro não seja encontrado
      */
-    public static void copiarFicheiro(String caminhoOriginal, String caminhoCopia) throws FileNotFoundException {
+    
+     public static void copiarFicheiro(String caminhoOriginal, String caminhoCopia) throws FileNotFoundException {
 
         File ficheiroOriginal = new File(caminhoOriginal);
         Scanner sc = new Scanner(ficheiroOriginal);
@@ -161,8 +162,8 @@ public class BibliotecaFicheiros {
 
     }
 
-    /**
-     * funçao para contar linhas de um ficheiro
+    /**funçao para contar linhas de um ficheiro
+     * 
      * @param caminho do ficheiro
      * @return o numero de linhas do ficheiro
      * @throws FileNotFoundException quando nao encontra o ficheiro
@@ -201,4 +202,41 @@ public class BibliotecaFicheiros {
         return numeroPalavras;
 
     }
+
+/**Lê um ficheiro CSV e retorna o seu conteúdo como uma matriz de strings sem cabeçalho.
+ * 
+ * @param caminho do ficheiro CSV
+ * @param separador utilizado no ficheiro CSV
+ * @return matriz de strings com os dados do ficheiro, sem o cabeçalho
+ * @throws FileNotFoundException quando não encontra o ficheiro
+ */
+    public static String[][] lerFicheiroParaMatrizSemCabecalho(String caminho, String separador) throws FileNotFoundException {
+
+        int numeroLinhasFicheiro = contarLinhasFicheiro(caminho);
+        int numeroColunasFicheiro = contarColunasFicheiro(caminho, separador);
+
+        String[][] matriz = new String[numeroLinhasFicheiro][numeroColunasFicheiro];
+
+
+        File ficheiro = new File(caminho);
+        Scanner sc = new Scanner(ficheiro);
+
+        int linhaPreencher = 0;
+
+        while (sc.hasNextLine()) {
+            String linhaAtual = sc.nextLine();
+            String[] linhaSeparada = linhaAtual.split(separador);
+
+            for (int i = 0; i < linhaSeparada.length; i++) {
+                matriz[linhaPreencher][i] = linhaSeparada[i];
+            }
+
+            linhaPreencher++;
+        }
+
+        sc.close();
+        return matriz;
+    }
+
+
 }

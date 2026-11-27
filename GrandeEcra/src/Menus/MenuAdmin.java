@@ -54,7 +54,7 @@ public class MenuAdmin {
                         topFilmes();
                         break;
                     case 6:
-                        // Chamar função para resetar lotação de uma sala
+                        resetarSala();
                         break;
                     case 0:
                         System.out.println("A voltar...");
