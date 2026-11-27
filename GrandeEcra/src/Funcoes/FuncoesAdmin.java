@@ -305,7 +305,7 @@ public class FuncoesAdmin {
             System.out.println("1 - Sala Mar");
             System.out.println("2 - Sala Terra");
             System.out.println("3 - Sala Sol");
-            System.out.print("Escolha a sala que deseja resetar:");
+            System.out.print("Escolha a sala que deseja resetar: ");
             try {
                 sala = sc.nextInt();
             } catch (InputMismatchException e) {
@@ -340,7 +340,7 @@ public class FuncoesAdmin {
         } while (sala <= 0 || sala > 3);
 
         // Confirmação da reposição da lotação da sala
-        System.out.println("Confirma a reposição da lotação da sala? (S/N) ");
+        System.out.print("\nnConfirma a reposição da lotação da sala? (S/N) ");
         String resposta = sc.next();
         // lê a resposta do utilizador sobre a reposição da lotação da sala
         if (resposta.equals("S") || resposta.equals("s")) {
@@ -348,10 +348,8 @@ public class FuncoesAdmin {
             int lugaresOcupados = 0;
             int totalLugares = 0;
             String[][] matrizSala = lerFicheiroParaMatrizSemCabecalho(caminhoFicheiro, ";");
-           
-            
-           for (int i = 0; i < matrizSala.length; i++) {
-                
+
+            for (int i = 0; i < matrizSala.length; i++) {
 
                 for (int j = 0; j < matrizSala[i].length; j++) {
                     if (matrizSala[i][j].equals("0")) {
@@ -363,14 +361,14 @@ public class FuncoesAdmin {
                 }
             }
             totalLugares = lugaresDisponiveis + lugaresOcupados;
-            System.out.println("Lugares disponíveis: " + lugaresDisponiveis);
-            System.out.println("Lugares ocupados: " + lugaresOcupados);
-            System.out.println("Total de lugares: " + (totalLugares));
-            // escreve a matriz atualizada de volta para o ficheiro
-            escreverFicheiro(caminhoFicheiro,, ";"));
+            System.out.println("\n-+-+-+-+-+-+-+-+- Lotação Reposta com sucesso. -+-+-+-+-+-+-+-+-");
+            System.out.println(lugaresOcupados + " Lugares libertados");
+            System.out.println("Sala " + nomeSala + ": " + totalLugares + " lugares no total.");
+
+            escreverMatriz(caminhoFicheiro, matrizSala, ";");
+
         } else {
             System.out.println("Operação cancelada.");
         }
     }
-
 }

@@ -9,12 +9,12 @@ public class BibliotecaFicheiros {
 
     /**
      * contar colunas do ficheiro
+     *
      * @param caminho para o ficheiro
      * @param separador usado
      * @return
      * @throws FileNotFoundException quando nao encontra o ficheiro
      */
-
     public static int contarColunasFicheiro(String caminho, String separador) throws FileNotFoundException {
 
         File ficheiro = new File(caminho);
@@ -27,9 +27,9 @@ public class BibliotecaFicheiros {
         return cabecalhoSeparado.length;
     }
 
-
     /**
-     * Função que lê o conteúdo de um ficheiro para uma matriz, excluindo cabeçalho
+     * Função que lê o conteúdo de um ficheiro para uma matriz, excluindo
+     * cabeçalho
      *
      * @param caminho Caminho para o ficheiro
      * @return Matriz (String) c/ o conteúdo do ficheiro
@@ -41,7 +41,6 @@ public class BibliotecaFicheiros {
         int numeroColunasFicheiro = contarColunasFicheiro(caminho, separador);
 
         String[][] matriz = new String[numeroLinhasFicheiro - 1][numeroColunasFicheiro];
-
 
         File ficheiro = new File(caminho);
         Scanner sc = new Scanner(ficheiro);
@@ -82,11 +81,11 @@ public class BibliotecaFicheiros {
         }
     }
 
-
     /**
      * Função que imprime um ficheiro na consola
      *
-     * @param caminho Caminho para o ficheiro a ser impresso (com extensão: .txt, .csv, etc)
+     * @param caminho Caminho para o ficheiro a ser impresso (com extensão:
+     * .txt, .csv, etc)
      * @throws FileNotFoundException O ficheiro não existe
      */
     public static void imprimirFicheiro(String caminho) throws FileNotFoundException {
@@ -104,9 +103,10 @@ public class BibliotecaFicheiros {
     /**
      * Função que escreve, num ficheiro, algum conteúdo
      *
-     * @param caminho  Caminho para o ficheiro a ser escrito
+     * @param caminho Caminho para o ficheiro a ser escrito
      * @param conteudo Conteúdo que queremos escrever
-     * @throws FileNotFoundException Se o ficheiro existir apaga e escreve de novo | Se o ficheiro não existir, cria um novo
+     * @throws FileNotFoundException Se o ficheiro existir apaga e escreve de
+     * novo | Se o ficheiro não existir, cria um novo
      */
     public static void escreverFicheiro(String caminho, String conteudo) throws FileNotFoundException {
 
@@ -118,15 +118,17 @@ public class BibliotecaFicheiros {
         pw.close();
     }
 
-    /**Função que copia o conteúdo de um ficheiro para outro ficheiro
-     * 
+    /**
+     * Função que copia o conteúdo de um ficheiro para outro ficheiro
      *
-     * @param caminhoOriginal Caminho do ficheiro original (que contém a informação)
-     * @param caminhoCopia    Caminho do ficheiro cópia (onde queremos colocar a informação)
+     *
+     * @param caminhoOriginal Caminho do ficheiro original (que contém a
+     * informação)
+     * @param caminhoCopia Caminho do ficheiro cópia (onde queremos colocar a
+     * informação)
      * @throws FileNotFoundException Caso o ficheiro não seja encontrado
      */
-    
-     public static void copiarFicheiro(String caminhoOriginal, String caminhoCopia) throws FileNotFoundException {
+    public static void copiarFicheiro(String caminhoOriginal, String caminhoCopia) throws FileNotFoundException {
 
         File ficheiroOriginal = new File(caminhoOriginal);
         Scanner sc = new Scanner(ficheiroOriginal);
@@ -144,7 +146,6 @@ public class BibliotecaFicheiros {
 
     }
 
-
     public static int somarNumerosFicheiro(String caminho) throws FileNotFoundException {
 
         File ficheiro = new File(caminho);
@@ -152,9 +153,9 @@ public class BibliotecaFicheiros {
 
         int total = 0;
 
-        while (sc.hasNextInt()){
+        while (sc.hasNextInt()) {
             int numeroAtual = sc.nextInt();
-            total+=numeroAtual;
+            total += numeroAtual;
         }
 
         sc.close();
@@ -162,21 +163,21 @@ public class BibliotecaFicheiros {
 
     }
 
-    /**funçao para contar linhas de um ficheiro
-     * 
+    /**
+     * funçao para contar linhas de um ficheiro
+     *
      * @param caminho do ficheiro
      * @return o numero de linhas do ficheiro
      * @throws FileNotFoundException quando nao encontra o ficheiro
      */
-
     public static int contarLinhasFicheiro(String caminho) throws FileNotFoundException {
 
         File ficheiro = new File(caminho);
         Scanner sc = new Scanner(ficheiro);
 
-        int numeroLinhas=0;
+        int numeroLinhas = 0;
 
-        while (sc.hasNextLine()){
+        while (sc.hasNextLine()) {
             numeroLinhas++;
             sc.nextLine();
         }
@@ -191,9 +192,9 @@ public class BibliotecaFicheiros {
         File ficheiro = new File(caminho);
         Scanner sc = new Scanner(ficheiro);
 
-        int numeroPalavras=0;
+        int numeroPalavras = 0;
 
-        while (sc.hasNext()){
+        while (sc.hasNext()) {
             numeroPalavras++;
             sc.next();
         }
@@ -203,20 +204,21 @@ public class BibliotecaFicheiros {
 
     }
 
-/**Lê um ficheiro CSV e retorna o seu conteúdo como uma matriz de strings sem cabeçalho.
- * 
- * @param caminho do ficheiro CSV
- * @param separador utilizado no ficheiro CSV
- * @return matriz de strings com os dados do ficheiro, sem o cabeçalho
- * @throws FileNotFoundException quando não encontra o ficheiro
- */
+    /**
+     * Lê um ficheiro CSV e retorna o seu conteúdo como uma matriz de strings
+     * sem cabeçalho.
+     *
+     * @param caminho do ficheiro CSV
+     * @param separador utilizado no ficheiro CSV
+     * @return matriz de strings com os dados do ficheiro, sem o cabeçalho
+     * @throws FileNotFoundException quando não encontra o ficheiro
+     */
     public static String[][] lerFicheiroParaMatrizSemCabecalho(String caminho, String separador) throws FileNotFoundException {
 
         int numeroLinhasFicheiro = contarLinhasFicheiro(caminho);
         int numeroColunasFicheiro = contarColunasFicheiro(caminho, separador);
 
         String[][] matriz = new String[numeroLinhasFicheiro][numeroColunasFicheiro];
-
 
         File ficheiro = new File(caminho);
         Scanner sc = new Scanner(ficheiro);
@@ -238,5 +240,28 @@ public class BibliotecaFicheiros {
         return matriz;
     }
 
+    /**
+     * Escreve uma matriz de strings num ficheiro CSV utilizando o separador
+     * especificado.
+     *
+     * @param caminho caminho do ficheiro CSV onde a matriz será escrita
+     * @param matriz matriz de strings a ser escrita no ficheiro CSV
+     * @param separador separador a ser utilizado no ficheiro CSV
+     * @throws FileNotFoundException quando não encontra o ficheiro
+     */
+    public static void escreverMatriz(String caminho, String[][] matriz, String separador) throws FileNotFoundException {
+
+        PrintWriter pw = new PrintWriter(caminho);
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                pw.print(matriz[i][j]);
+                if (j < matriz[i].length - 1) {
+                    pw.print(separador);
+                }
+            }
+            pw.println();
+        }
+        pw.close();
+    }
 
 }
