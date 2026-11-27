@@ -50,7 +50,7 @@ public class MenuCliente {
                         pesquisarFilme();
                         break;
                     case 4:
-                        // Chamar função para visualizar mapa de uma sala
+                        visualizarMapaSala();
                         break;
                     case 5:
                         // Chamar função para reservar bilhetes
