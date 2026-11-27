@@ -1,9 +1,6 @@
 package Menus;
 
-import Funcoes.FuncoesCliente;
-
 import static Funcoes.FuncoesCliente.*;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -53,7 +50,7 @@ public class MenuCliente {
                         visualizarMapaSala();
                         break;
                     case 5:
-                        // Chamar função para reservar bilhetes
+                        reservarBilhetes();
                         break;
                     case 6:
                         // Chamar função para recomendar filmes

@@ -97,9 +97,29 @@ public class FuncoesCliente {
      */
     public static void visualizarMapaSala() {
 
+        try {
+            String nomeSala = escolherSala();
+            String caminhoFicheiro = "GrandeEcra/GrandeEcra_Ficheiros/Sala_" + nomeSala + ".csv";
+
+            String[][] matrizSala = lerFicheiroParaMatrizSemCabecalho(caminhoFicheiro, ";");
+            mostrarMapa(nomeSala, matrizSala);
+        } catch (FileNotFoundException e) {
+            System.out.println("Ocorreu um erro: ficheiro não encontrado");
+        }
+
+    }
+
+    /**
+     * Escolhe uma sala de cinema entre as opções disponíveis.
+     *
+     * @return nome da sala escolhida (Mar, Terra ou Sol)
+     */
+    public static String escolherSala() {
+
         Scanner input = new Scanner(System.in);
 
         int sala = -1;
+        String nomeSala = "";
 
         do {
             System.out.println("\n1 - Sala Mar");
@@ -114,66 +134,113 @@ public class FuncoesCliente {
                 input.nextLine(); // limpar o buffer do scanner
                 sala = -1;
             }
-
         } while (sala < 1 || sala > 3);
 
-        String caminhoFicheiro = "";
-        String nomeSala = "";
-        double contadorLugaresOcupados = 0;
-        double contadorLugaresLivres = 0;
-
-        if (sala == 1) {
-            caminhoFicheiro = "GrandeEcra/GrandeEcra_Ficheiros/Sala_Mar.csv";
-            nomeSala = "Mar";
-        } else if (sala == 2) {
-            caminhoFicheiro = "GrandeEcra/GrandeEcra_Ficheiros/Sala_Terra.csv";
-            nomeSala = "Terra";
-        } else if (sala == 3) {
-            caminhoFicheiro = "GrandeEcra/GrandeEcra_Ficheiros/Sala_Sol.csv";
-            nomeSala = "Sol";
+        switch (sala) {
+            case 1:
+                nomeSala = "Mar";
+                break;
+            case 2:
+                nomeSala = "Terra";
+                break;
+            case 3:
+                nomeSala = "Sol";
+                break;
         }
-        try {
-            String[][] matrizSala = lerFicheiroParaMatrizSemCabecalho(caminhoFicheiro, ";");
-            System.out.println("\nSala " + nomeSala + ":");
-            System.out.println("Ecra");
-            System.out.println("=============");
-            System.out.println(" ");
+        return nomeSala;
+    }
 
-            // Letras das filas da sala
-            String[] linhaSala = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"};
+    /**
+     * Mostra o mapa da sala de cinema e retorna o número de lugares livres.
+     *
+     * @param nomeSala nome da sala de cinema (Mar, Terra ou Sol)
+     * @param matrizSala matriz que representa os lugares da sala (1 - ocupado,
+     * 0 - livre)
+     * @return número de lugares livres na sala
+     */
+    public static int mostrarMapa(String nomeSala, String[][] matrizSala) {
 
-            System.out.print("  "); // Espaço para alinhar com as letras das filas
-            // Imprimir números das colunas da sala
-            for (int i = 0; i < matrizSala[0].length; i++) {
-                System.out.print(" " + (i + 1) + " ");
-            }
-            System.out.println();
-            for (int i = 0; i < matrizSala.length; i++) {
-                System.out.print(linhaSala[i] + " ");
-                for (int j = 0; j < matrizSala[i].length; j++) {
-                    if (matrizSala[i][j].equals("1")) {
-                        System.out.print(" X ");
-                        contadorLugaresOcupados++;
-                    } else {
-                        System.out.print(" O ");
-                        contadorLugaresLivres++;
-                    }
+        int contadorLugaresOcupados = 0;
+        int contadorLugaresLivres = 0;
+
+        System.out.println("\nSala " + nomeSala + ":");
+        System.out.println("Ecra");
+        System.out.println("=============");
+        System.out.println(" ");
+
+        // Letras das filas da sala
+        String[] linhaSala = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"};
+
+        System.out.print("  "); // Espaço para alinhar com as letras das filas
+        // Imprimir números das colunas da sala
+        for (int i = 0; i < matrizSala[0].length; i++) {
+            System.out.print(" " + (i + 1) + " ");
+        }
+        System.out.println();
+        for (int i = 0; i < matrizSala.length; i++) {
+            System.out.print(linhaSala[i] + " ");
+            for (int j = 0; j < matrizSala[i].length; j++) {
+                if (matrizSala[i][j].equals("1")) {
+                    System.out.print(" X ");
+                    contadorLugaresOcupados++;
+                } else {
+                    System.out.print(" O ");
+                    contadorLugaresLivres++;
                 }
-                System.out.println(); // muda de linha no fim de cada fila
             }
-
-            // estatísticas: dentro do try, mas fora dos dois for (correm uma só vez)
-            System.out.println();
-            double totalLugares = contadorLugaresOcupados + contadorLugaresLivres;
-            double taxaOcupacao = (contadorLugaresOcupados / totalLugares) * 100;
-
-            System.out.println("O - Disponível | X - Ocupado");
-            System.out.println("Lotação: " + totalLugares + " | Disponiveis: " + contadorLugaresLivres + " | Ocupados: " + contadorLugaresOcupados);
-            System.out.println("Taxa de ocupação: " + taxaOcupacao + "%");
-        } catch (FileNotFoundException e) {
-            System.out.println("Ocorreu um erro: ficheiro não encontrado");
+            System.out.println(); // muda de linha no fim de cada fila
         }
+
+        // estatísticas: dentro do try, mas fora dos dois for (correm uma só vez)
+        System.out.println();
+        double totalLugares = contadorLugaresOcupados + contadorLugaresLivres;
+        double taxaOcupacao = (contadorLugaresOcupados / totalLugares) * 100;
+
+        System.out.println("O - Disponível | X - Ocupado");
+        System.out.println("Lotação: " + totalLugares + " | Disponiveis: " + contadorLugaresLivres + " | Ocupados: " + contadorLugaresOcupados);
+        System.out.println("Taxa de ocupação: " + taxaOcupacao + "%");
+
+        return contadorLugaresLivres;
 
     }
 
+    public static void reservarBilhetes() {
+
+        Scanner sc = new Scanner(System.in);
+        int quantidadeBilhetes = 0;
+
+        String nomeSala = escolherSala();
+        String caminhoFicheiro = "GrandeEcra/GrandeEcra_Ficheiros/Sala_" + nomeSala + ".csv";
+
+        try {
+            // ler a sala e mostrar o mapa
+            String[][] matrizSala = lerFicheiroParaMatrizSemCabecalho(caminhoFicheiro, ";");
+            int livres = mostrarMapa(nomeSala, matrizSala);
+
+            if (livres == 0) {
+                // sala cheia: informar e regressar ao menu
+                System.out.println("Não há lugares disponíveis na sala " + nomeSala);
+            } else {
+                System.out.println("Há " + livres + " lugares disponíveis na sala " + nomeSala);
+
+                // pedir a quantidade
+                do {
+                    System.out.print("Quantidade de bilhetes: ");
+                    try {
+                        quantidadeBilhetes = sc.nextInt();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Insira um número válido.");
+                        sc.nextLine(); // limpar o buffer do scanner
+                        quantidadeBilhetes = -1;
+                    }
+                } while (quantidadeBilhetes < 1 || quantidadeBilhetes > livres);
+
+                System.out.println("quantidade = " + quantidadeBilhetes);
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Erro: Ficheiro da sala não encontrado.");
+        }
+
+    }
 }

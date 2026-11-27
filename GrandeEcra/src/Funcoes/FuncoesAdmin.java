@@ -302,51 +302,12 @@ public class FuncoesAdmin {
 
         Scanner sc = new Scanner(System.in);
 
-        int sala = -1;
-        String nomeSala = "";
-        String caminhoFicheiro = "";
-
-        //pequeno menu para escolher a sala a resetar
-        do {
-            System.out.println("1 - Sala Mar");
-            System.out.println("2 - Sala Terra");
-            System.out.println("3 - Sala Sol");
-            System.out.print("Escolha a sala que deseja resetar: ");
-            try {
-                sala = sc.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Opção invalida, insira um número.");
-                sc.nextLine(); // limpar o buffer do scanner
-                sala = -1; // forçar a repetição do loop
-            }
-            if (sala != -1) {
-                // atribui o caminho do ficheiro e o nome da sala com base na escolha do utilizador
-                switch (sala) {
-                    case 1:
-                        System.out.println("Sala Mar selecionada.");
-                        nomeSala = "Mar";
-                        caminhoFicheiro = "GrandeEcra/GrandeEcra_Ficheiros/Sala_Mar.csv";
-                        break;
-                    case 2:
-                        System.out.println("Sala Terra selecionada.");
-                        nomeSala = "Terra";
-                        caminhoFicheiro = "GrandeEcra/GrandeEcra_Ficheiros/Sala_Terra.csv";
-                        break;
-                    case 3:
-                        System.out.println("Sala Sol selecionada.");
-                        nomeSala = "Sol";
-                        caminhoFicheiro = "GrandeEcra/GrandeEcra_Ficheiros/Sala_Sol.csv";
-                        break;
-                    default:
-                        System.out.println("Opção inválida.");
-                        break;
-                }
-
-            }
-        } while (sala <= 0 || sala > 3);
+        // escolher a sala (a função devolve "Mar", "Terra" ou "Sol")
+        String nomeSala = FuncoesCliente.escolherSala();
+        String caminhoFicheiro = "GrandeEcra/GrandeEcra_Ficheiros/Sala_" + nomeSala + ".csv";
 
         // Confirmação da reposição da lotação da sala
-        System.out.print("\nnConfirma a reposição da lotação da sala? (S/N) ");
+        System.out.print("\nConfirma a reposição da lotação da sala? (S/N) ");
         String resposta = sc.next();
         // lê a resposta do utilizador sobre a reposição da lotação da sala
         if (resposta.equals("S") || resposta.equals("s")) {
