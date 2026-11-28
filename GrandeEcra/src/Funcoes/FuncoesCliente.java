@@ -206,6 +206,8 @@ public class FuncoesCliente {
 
     public static void reservarBilhetes() {
 
+        String[] linhaSala = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"};
+
         Scanner sc = new Scanner(System.in);
         int quantidadeBilhetes = 0;
 
@@ -232,12 +234,36 @@ public class FuncoesCliente {
                         System.out.println("Insira um número válido.");
                         sc.nextLine(); // limpar o buffer do scanner
                         quantidadeBilhetes = -1;
+
                     }
                 } while (quantidadeBilhetes < 1 || quantidadeBilhetes > livres);
 
-                System.out.println("quantidade = " + quantidadeBilhetes);
-            }
+                // pedir a fila para cada bilhete
+                for (int i = 0; i < quantidadeBilhetes; i++) {
 
+                    System.out.println("Bilhete: " + (i + 1));
+                    System.out.print("Introduza a fila: ");
+                    String fila = sc.next();
+
+                    int posicaoFila = -1;
+                    // verificar se a fila introduzida é válida
+                    for (int j = 0; j < linhaSala.length; j++) {
+                        if (linhaSala[j].equals(fila)) {
+                            posicaoFila = j;
+                        }
+                    }
+                    if (posicaoFila == -1) {
+                        System.out.println("Fila inválida: " + fila);
+                    } else {
+                        System.out.println("Fila válida: " + linhaSala[posicaoFila]);
+                    }
+
+                    System.out.print("Introduza o lugar: ");
+                    int lugar = sc.nextInt();
+
+                }
+            
+            }
         } catch (FileNotFoundException e) {
             System.out.println("Erro: Ficheiro da sala não encontrado.");
         }
